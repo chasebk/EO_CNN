@@ -28,7 +28,7 @@
 
 # Human (Our proposed)
 1. Social Ski-Driver Optimization (SSDO) - 2019 - SSDO-CNN
-
+2. Life Choice-Based Optimizer (LCBO) - 2019 - LCBO-CNN
 
 
 ### Weights of Hybrid-CNN

@@ -49,6 +49,12 @@ domain_ranges = [(-1, 1)]
 ## For ELM network
 elm_activation = ['elu']
 
+## For CNN networks
+filters_sizes = [16, ]
+kernel_sizes = [2, ]
+pool_sizes = [2, ]
+
+
 ###================= Settings models for drafts ==============================#####
 
 
@@ -102,10 +108,11 @@ cnn1_final = {
 	"loss": losses,
 	"dropouts": dropouts,
 
-	"filters_size": [64, ],
-	"kernel_size": [2, ],
-	"pool_size": [2, ]
+	"filters_size": filters_sizes,
+	"kernel_size": kernel_sizes,
+	"pool_size": pool_sizes
 }
+
 
 #### : GA-RNN
 ga_rnn_final = {
@@ -133,15 +140,17 @@ ga_gru_final = {
 	"domain_range": domain_ranges
 }
 
+###================= Settings models for paper hybrid-CNN ============================####
+
 #### : GA-CNN
 ga_cnn_final = {
 	"hidden_sizes": hidden_sizes2,
 	"activations": activations,
 	"dropouts": dropouts,
 
-	"filters_size": [64, ],
-	"kernel_size": [2, ],
-	"pool_size": [2],
+	"filters_size": filters_sizes,
+	"kernel_size": kernel_sizes,
+	"pool_size": pool_sizes,
 
 	"epoch": epochs,
 	"pop_size": pop_sizes,
@@ -149,6 +158,87 @@ ga_cnn_final = {
 	"pm": [0.025],  # 0.005 -> 0.10
 	"domain_range": domain_ranges
 }
+
+#### : WOA-CNN
+woa_cnn_final = {
+	"hidden_sizes": hidden_sizes2,
+	"activations": activations,
+	"dropouts": dropouts,
+
+	"filters_size": filters_sizes,
+	"kernel_size": kernel_sizes,
+	"pool_size": pool_sizes,
+
+	"epoch": epochs,
+	"pop_size": pop_sizes,
+	"domain_range": domain_ranges
+}
+
+#### : MVO-CNN
+mvo_cnn_final = {
+	"hidden_sizes": hidden_sizes2,
+	"activations": activations,
+	"dropouts": dropouts,
+
+	"filters_size": filters_sizes,
+	"kernel_size": kernel_sizes,
+	"pool_size": pool_sizes,
+
+	"epoch": epochs,
+	"pop_size": pop_sizes,
+	"wep_minmax": [(1.0, 0.2), ],
+	"domain_range": domain_ranges
+}
+
+#### : SBO-CNN
+sbo_cnn_final = {
+	"hidden_sizes": hidden_sizes2,
+	"activations": activations,
+	"dropouts": dropouts,
+
+	"filters_size": filters_sizes,
+	"kernel_size": kernel_sizes,
+	"pool_size": pool_sizes,
+
+	"epoch": epochs,
+	"pop_size": pop_sizes,
+	"alpha": [0.94],
+	"pm": [0.05],
+	"z": [0.02],
+	"domain_range": domain_ranges
+}
+
+#### : SSDO-CNN
+ssdo_cnn_final = {
+	"hidden_sizes": hidden_sizes2,
+	"activations": activations,
+	"dropouts": dropouts,
+
+	"filters_size": filters_sizes,
+	"kernel_size": kernel_sizes,
+	"pool_size": pool_sizes,
+
+	"epoch": epochs,
+	"pop_size": pop_sizes,
+	"domain_range": domain_ranges
+}
+
+#### : LCBO-CNN
+lcbo_cnn_final = {
+	"hidden_sizes": hidden_sizes2,
+	"activations": activations,
+	"dropouts": dropouts,
+
+	"filters_size": filters_sizes,
+	"kernel_size": kernel_sizes,
+	"pool_size": pool_sizes,
+
+	"epoch": epochs,
+	"pop_size": pop_sizes,
+	"domain_range": domain_ranges
+}
+
+
 
 ###================= Settings models for paper ============================####
 
