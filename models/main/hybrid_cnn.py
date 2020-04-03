@@ -10,9 +10,10 @@
 from models.root.hybrid.root_hybrid_deep_nets import RootHybridCnn
 from mealpy.evolutionary_based import GA
 from mealpy.swarm_based import WOA
-from mealpy.physics_based import MVO
+from mealpy.physics_based import MVO, EO
 from mealpy.bio_based import SBO
 from mealpy.human_based import SSDO, LCBO
+from mealpy.system_based import AEO
 
 
 class GaCnn(RootHybridCnn):
@@ -92,3 +93,26 @@ class LcboCnn(RootHybridCnn):
 		md = LCBO.LevyLCBO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size)
 		self.solution, self.best_fit, self.loss_train = md._train__()
 
+
+class EoCnn(RootHybridCnn):
+	def __init__(self, root_base_paras=None, root_hybrid_paras=None, cnn_paras=None, eo_paras=None):
+		RootHybridCnn.__init__(self, root_base_paras, root_hybrid_paras, cnn_paras)
+		self.epoch = eo_paras["epoch"]
+		self.pop_size = eo_paras["pop_size"]
+		self.filename = "EO_CNN-" + root_hybrid_paras["paras_name"]
+
+	def _training__(self):
+		md = EO.LevyEO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size)
+		self.solution, self.best_fit, self.loss_train = md._train__()
+
+
+class AeoCnn(RootHybridCnn):
+	def __init__(self, root_base_paras=None, root_hybrid_paras=None, cnn_paras=None, aeo_paras=None):
+		RootHybridCnn.__init__(self, root_base_paras, root_hybrid_paras, cnn_paras)
+		self.epoch = aeo_paras["epoch"]
+		self.pop_size = aeo_paras["pop_size"]
+		self.filename = "AEO_CNN-" + root_hybrid_paras["paras_name"]
+
+	def _training__(self):
+		md = AEO.LevyAEO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size)
+		self.solution, self.best_fit, self.loss_train = md._train__()

@@ -238,6 +238,35 @@ lcbo_cnn_final = {
 	"domain_range": domain_ranges
 }
 
+#### : LCBO-CNN
+eo_cnn_final = {
+	"hidden_sizes": hidden_sizes2,
+	"activations": activations,
+	"dropouts": dropouts,
+
+	"filters_size": filters_sizes,
+	"kernel_size": kernel_sizes,
+	"pool_size": pool_sizes,
+
+	"epoch": epochs,
+	"pop_size": pop_sizes,
+	"domain_range": domain_ranges
+}
+
+#### : LCBO-CNN
+aeo_cnn_final = {
+	"hidden_sizes": hidden_sizes2,
+	"activations": activations,
+	"dropouts": dropouts,
+
+	"filters_size": filters_sizes,
+	"kernel_size": kernel_sizes,
+	"pool_size": pool_sizes,
+
+	"epoch": epochs,
+	"pop_size": pop_sizes,
+	"domain_range": domain_ranges
+}
 
 
 ###================= Settings models for paper ============================####
