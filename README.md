@@ -22,6 +22,7 @@
 
 # Physics 
 1. Multi-Verse Optimizer (MVO) - 2016 - MVO-CNN
+2. EO 
 
 # Bio 
 1. Satin Bowerbird Optimizer (SBO) - 2017 - SBO-CNN
@@ -30,6 +31,8 @@
 1. Social Ski-Driver Optimization (SSDO) - 2019 - SSDO-CNN
 2. Life Choice-Based Optimizer (LCBO) - 2019 - LCBO-CNN
 
+# System
+1. AEO 
 
 ### Weights of Hybrid-CNN
 * sliding windows: 2h is the best - 24
