@@ -14,7 +14,7 @@ SPF_SCALING = "minmax"
 SPF_FEATURE_SIZE = 1
 SPF_TRAIN_SPLIT = 0.75
 SPF_LOG_FILENAME = "LOG_MODELS"
-SPF_PATH_SAVE_BASE = "history/results_final/"
+SPF_PATH_SAVE_BASE = "history/results_final_2/"
 SPF_DRAW = True
 SPF_LOG = 0  # 0: nothing, 1 : full detail, 2: short version
 
@@ -50,7 +50,7 @@ domain_ranges = [(-1, 1)]
 elm_activation = ['elu']
 
 ## For CNN networks
-filters_sizes = [16, ]
+filters_sizes = [8, ]
 kernel_sizes = [2, ]
 pool_sizes = [2, ]
 

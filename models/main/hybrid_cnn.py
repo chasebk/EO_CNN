@@ -77,7 +77,7 @@ class SsdoCnn(RootHybridCnn):
 		self.filename = "SSDO_CNN-" + root_hybrid_paras["paras_name"]
 
 	def _training__(self):
-		md = SSDO.BaseSSDO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size)
+		md = SSDO.LevySSDO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size)
 		self.solution, self.best_fit, self.loss_train = md._train__()
 
 
@@ -89,6 +89,6 @@ class LcboCnn(RootHybridCnn):
 		self.filename = "LCBO_CNN-" + root_hybrid_paras["paras_name"]
 
 	def _training__(self):
-		md = LCBO.BaseLCBO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size)
+		md = LCBO.LevyLCBO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size)
 		self.solution, self.best_fit, self.loss_train = md._train__()
 

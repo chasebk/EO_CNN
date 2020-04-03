@@ -75,3 +75,8 @@
 ### Results from test4 proved : elu-elu or relu-relu is the best
 - ('tanh', 'elu'), ('relu', 'elu'), ('elu', 'elu'), ('tanh', 'relu'), ('elu', 'relu'), ('relu', 'relu'), 
 ('tanh', 'signmoid'), ('relu', 'sigmoid'), ('elu', 'sigmoid')
+
+
+https://blog.coast.ai/lets-evolve-a-neural-network-with-a-genetic-algorithm-code-included-8809bece164
+https://github.com/harvitronix/neural-network-genetic-algorithm
+https://github.com/jliphard/DeepEvolve
