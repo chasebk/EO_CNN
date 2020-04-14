@@ -37,6 +37,20 @@
 ### Weights of Hybrid-CNN
 * sliding windows: 2h is the best - 24
 
+
+## Final comparison between
+1. RNN
+2. LSTM
+3. GRU
+4. CNN
+5. WOA-CNN  (Whale)
+6. Multi-Verse Optimizer (MVO) - 2016 - MVO-CNN
+7. Satin Bowerbird Optimizer (SBO) - 2017 - SBO-CNN
+8. Life Choice-Based Optimizer (LCBO) - 2019 - LCBO-CNN
+9. Life Choice-Based Optimizer (LCBO) - 2019 - LCBO-CNN
+10. AEO-CNN (Our proposed)
+
+
 * Kernel size changed:
 ```code 
 - 4 - 2 - 2
