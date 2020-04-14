@@ -2,9 +2,9 @@
 
 ### Paper Name
 
-1. Cloud Resources Prediction Using Meta-heuristics And Convolutional Neural Network
-2. Forecasting Cloud Resources Using Hybrid Convolutional Neural Network
-3. Applying The State-Of-The-Art Meta-heuristics and Convolutional Neural Network For Forecasting Cloud Resources
+1. Time Series Prediction Using Meta-heuristics And Convolutional Neural Network
+2. Forecasting Time Series Using Hybrid Convolutional Neural Network
+3. Applying The State-Of-The-Art Meta-heuristics and Convolutional Neural Network For Time Series Prediction
 
 # Traditional
 
