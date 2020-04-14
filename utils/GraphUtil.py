@@ -7,7 +7,6 @@
 #       Github:     https://github.com/thieunguyen5991                                                  %
 # -------------------------------------------------------------------------------------------------------%
 
-from numpy import array, arange
 import matplotlib.pyplot as plt
 
 
@@ -98,15 +97,3 @@ def _plot_train_history__(history, title):
     plt.show()
     return 0
 
-
-def multi_step_plot(history, true_future, prediction, num_steps):
-    plt.figure(figsize=(12, 6))
-    num_in = __create_time_steps__(len(history))
-    num_out = len(true_future)
-
-    plt.plot(num_in, array(history[:, 1]), label='History')
-    plt.plot(arange(num_out) / num_steps, array(true_future), 'bo', label='True Future')
-    if prediction.any():
-        plt.plot(arange(num_out) / num_steps, array(prediction), 'ro', label='Predicted Future')
-    plt.legend(loc='upper left')
-    plt.show()

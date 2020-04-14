@@ -24,12 +24,6 @@ SPF_DATA_FILENAME = ["f_occupancy_t4013", "f_speed_7578", "f_TravelTime_451"]
 SPF_DATA_COLS = [[1], [1], [1]]
 SPF_DATA_WINDOWS = [(1,2,3,4,5,6,7,8,9,10,11,12), (1,2,3,4,5), (1,2,3,4)]  # Using ACF to determine which one will used
 
-# 0.4 -> 1-12, 0.5 -> 1-8
-# 0.4 -> 1-5, 0.5 -> 1-3
-# 0.4 -> 1-4, 0.5 -> 1-3
-# > upper: 1-33, 1-10 - 29-40, 1-14     (very bad results)
-# 0.57 -> 1-2 all  -> not good as 0.4
-
 
 ###### Setting for paper running on server ==============================
 epochs = [1000]
@@ -58,33 +52,6 @@ pool_sizes = [2, ]
 ###================= Settings models for drafts ==============================#####
 
 
-#### : Immune-SONIA
-sonia_final = {
-	"clustering_type": ['immune'],  # immune_full: cluster + mutation, else: cluster
-	"stimulation_level": [0.15, 0.25, 0.5],
-	"positive_number": [0.25],
-	"distance_level": [0.15],
-
-	"max_cluster": [500],  # default
-	"mutation_id": [0],  # default
-
-	"epoch": epochs,
-	"batch_size": batch_sizes,
-	"learning_rate": learning_rates,
-	"activations": activations,
-	"optimizer": optimizers,
-	"loss": losses
-}
-
-
-
-#### : ELM
-elm_final = {
-	"hidden_size": hidden_sizes1,
-	"activation": elm_activation
-}
-
-
 ####: GRU-1HL
 gru1hl_final = {
 	"hidden_sizes": hidden_sizes1,
@@ -111,33 +78,6 @@ cnn1_final = {
 	"filters_size": filters_sizes,
 	"kernel_size": kernel_sizes,
 	"pool_size": pool_sizes
-}
-
-
-#### : GA-RNN
-ga_rnn_final = {
-	"hidden_sizes": hidden_sizes2,
-	"activations": activations,
-	"dropouts": dropouts,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"pc": [0.95],  # 0.85 -> 0.97
-	"pm": [0.025],  # 0.005 -> 0.10
-	"domain_range": domain_ranges
-}
-
-#### : GA-GRU
-ga_gru_final = {
-	"hidden_sizes": hidden_sizes2,
-	"activations": activations,
-	"dropouts": dropouts,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"pc": [0.95],  # 0.85 -> 0.97
-	"pm": [0.025],  # 0.005 -> 0.10
-	"domain_range": domain_ranges
 }
 
 ###================= Settings models for paper hybrid-CNN ============================####
@@ -238,7 +178,7 @@ lcbo_cnn_final = {
 	"domain_range": domain_ranges
 }
 
-#### : LCBO-CNN
+#### : EO-CNN
 eo_cnn_final = {
 	"hidden_sizes": hidden_sizes2,
 	"activations": activations,
@@ -253,7 +193,7 @@ eo_cnn_final = {
 	"domain_range": domain_ranges
 }
 
-#### : LCBO-CNN
+#### : AEO-CNN
 aeo_cnn_final = {
 	"hidden_sizes": hidden_sizes2,
 	"activations": activations,
@@ -309,218 +249,3 @@ lstm1hl_final = {
 	"loss": losses,
 	"dropouts": dropouts
 }
-
-#### ============== Hybrid LSTM ==============================######
-
-#### : GA-LSTM
-ga_lstm_final = {
-	"hidden_sizes": hidden_sizes2,
-	"activations": activations,
-	"dropouts": dropouts,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"pc": [0.95],  # 0.85 -> 0.97
-	"pm": [0.025],  # 0.005 -> 0.10
-	"domain_range": domain_ranges
-}
-
-#### : DE-LSTM
-de_lstm_final = {
-	"hidden_sizes": hidden_sizes2,
-	"activations": activations,
-	"dropouts": dropouts,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"wf": [0.8],
-	"cr": [0.9],
-	"domain_range": domain_ranges
-}
-
-#### : PSO-LSTM
-pso_lstm_final = {
-	"hidden_sizes": hidden_sizes2,
-	"activations": activations,
-	"dropouts": dropouts,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"c1": [2.0],
-	"c2": [2.0],
-	"w_min": [0.4],
-	"w_max": [0.9],
-	"domain_range": domain_ranges
-}
-
-#### : WOA-LSTM
-woa_lstm_final = {
-	"hidden_sizes": hidden_sizes2,
-	"activations": activations,
-	"dropouts": dropouts,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"domain_range": domain_ranges
-}
-
-#### : WDO-LSTM
-wdo_lstm_final = {
-	"hidden_sizes": hidden_sizes2,
-	"activations": activations,
-	"dropouts": dropouts,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"RT": [3],
-	"g": [0.2],
-	"alp": [0.4],
-	"c": [0.4],
-	"max_v": [0.3],
-	"domain_range": domain_ranges
-}
-
-#### : MVO-LSTM
-mvo_lstm_final = {
-	"hidden_sizes": hidden_sizes2,
-	"activations": activations,
-	"dropouts": dropouts,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"wep_minmax": [(1.0, 0.2), ],
-	"domain_range": domain_ranges
-}
-
-#### : EO-LSTM
-eo_lstm_final = {
-	"hidden_sizes": hidden_sizes2,
-	"activations": activations,
-	"dropouts": dropouts,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"domain_range": domain_ranges
-}
-
-#### ============== Hybrid MLP ==============================######
-
-#### : GA-MLP
-ga_mlp_final = {
-	"hidden_size": hidden_sizes1,
-	"activations": activations,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"pc": [0.95],  # 0.85 -> 0.97
-	"pm": [0.025],  # 0.005 -> 0.10
-	"domain_range": domain_ranges
-}
-
-#### : DE-MLP
-de_mlp_final = {
-	"hidden_size": hidden_sizes1,
-	"activations": activations,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"wf": [0.8],
-	"cr": [0.9],
-	"domain_range": domain_ranges
-}
-
-#### : PSO-MLP
-pso_mlp_final = {
-	"hidden_size": hidden_sizes1,
-	"activations": activations,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"c1": [1.2],
-	"c2": [1.2],
-	"w_min": [0.4],
-	"w_max": [0.9],
-	"domain_range": domain_ranges
-}
-
-#### : WOA-MLP
-woa_mlp_final = {
-	"hidden_size": hidden_sizes1,
-	"activations": activations,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"domain_range": domain_ranges
-}
-
-#### : WDO-MLP
-wdo_mlp_final = {
-	"hidden_size": hidden_sizes1,
-	"activations": activations,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"RT": [3],
-	"g": [0.2],
-	"alp": [0.4],
-	"c": [0.4],
-	"max_v": [0.3],
-	"domain_range": domain_ranges
-}
-
-#### : MVO-MLP
-mvo_mlp_final = {
-	"hidden_size": hidden_sizes1,
-	"activations": activations,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"wep_minmax": [(1.0, 0.2), ],
-	"domain_range": domain_ranges
-}
-
-#### : EO-MLP
-eo_mlp_final = {
-	"hidden_size": hidden_sizes1,
-	"activations": activations,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"domain_range": domain_ranges
-}
-
-#### ============== Hybrid ELM ==============================######
-
-#### : GA-ELM
-ga_elm_final = {
-	"hidden_size": hidden_sizes1,
-	"activation": elm_activation,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"pc": [0.95],  # 0.85 -> 0.97
-	"pm": [0.025],  # 0.005 -> 0.10
-	"domain_range": domain_ranges
-}
-
-
-# ================ Hybrid SONIA : Cluster + Mutation + Algorithm ============================
-
-#### : GA-SONIA
-ga_sonia_final = {
-	"stimulation_level": [0.25],
-	"positive_number": [0.10],
-	"distance_level": [0.5],
-	"activations": activations,
-
-	"max_cluster": [500],  # default
-	"mutation_id": [0],  # default
-	"clustering_type": ['immune_full', 'immune'],  # immune_full: cluster + mutation, immune: cluster
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"pc": [0.95],  # 0.85 -> 0.97
-	"pm": [0.025],  # 0.005 -> 0.10
-	"domain_range": domain_ranges
-}
-

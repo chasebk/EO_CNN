@@ -7,7 +7,6 @@
 #       Github:     https://github.com/thieunguyen5991                                                  %
 #-------------------------------------------------------------------------------------------------------%
 
-
 from os.path import splitext, basename, realpath
 from sklearn.model_selection import ParameterGrid
 from models.main.hybrid_cnn import WoaCnn

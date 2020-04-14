@@ -10,27 +10,6 @@
 from numpy import reshape, array
 
 
-class CheckDataset:
-    def __init__(self):
-        pass
-
-    def _checking_consecutive__(self, df, time_name="timestamp", time_different=300):
-        """
-        :param df: Type of this must be dataframe
-        :param time_name: the column name of date time
-        :param time_different by seconds: 300 = 5 minutes
-            https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.Timedelta.html
-        :return:
-        """
-        consecutive = True
-        for i in range(df.shape[0] - 1):
-            diff = (df[time_name].iloc[i + 1] - df[time_name].iloc[i]).seconds
-            if time_different != diff:
-                print("===========Not consecutive at: {}, different: {} ====================".format(i + 3, diff))
-                consecutive = False
-        return consecutive
-
-
 class TimeSeries:
     def __init__(self, data=None, train_split=0.8):
         self.data_original = data
@@ -97,55 +76,6 @@ class TimeSeries:
             # Reshape data from (history_size,) to (history_size, 1)
             data.append(reshape(dataset[indices], (history_size, 1)))
             labels.append(dataset[i + history_column[-1]])
-        if pre_type == "3D":
-            return array(data), array(labels)
-        return reshape(array(data), (-1, history_size)), array(labels)
-
-    #### 2 methods below we don't use it anymore
-    def _univariate_data_old__(self, dataset, start_index=0, end_index=None, history_size=3, target_size=0, pre_type="2D"):
-        """
-        :param dataset: 2-D numpy array
-        :param start_index: 0- training set, N- valid or testing set
-        :param end_index: N-training or valid set, None-testing set
-        :param history_size: sliding window, 1 mean t-1, 2 mean t-2, 3 mean t-3,...
-        :param target_size: 1 mean t, 2 mean t+1, 3 mean t+2
-        :param type: 3D for RNN-based, 2D for normal neural network like MLP, FFLN,..
-        :return:
-        """
-        data = []
-        labels = []
-
-        start_index = start_index + history_size
-        if end_index is None:
-            end_index = len(dataset) - target_size
-
-        for i in range(start_index, end_index):
-            indices = range(i - history_size, i)
-            # Reshape data from (history_size,) to (history_size, 1)
-            data.append(reshape(dataset[indices], (history_size, 1)))
-            labels.append(dataset[i + target_size])
-        if pre_type == "3D":
-            return array(data), array(labels)
-        return reshape(array(data), (-1, history_size)), array(labels)
-
-    def _multivariate_data__(self, dataset, target_label, start_index, end_index, history_size, target_size, step,
-                             single_step=False, pre_type="2D"):
-        data = []
-        labels = []
-
-        start_index = start_index + history_size
-        if end_index is None:
-            end_index = len(dataset) - target_size
-
-        for i in range(start_index, end_index):
-            indices = range(i - history_size, i, step)
-            data.append(dataset[indices])
-
-            if single_step:
-                labels.append(target_label[i + target_size])
-            else:
-                labels.append(target_label[i:i + target_size])
-
         if pre_type == "3D":
             return array(data), array(labels)
         return reshape(array(data), (-1, history_size)), array(labels)
