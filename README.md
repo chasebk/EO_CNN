@@ -1,54 +1,35 @@
-# code_kes2020
-
-### Paper Name
-
-1. Time Series Prediction Using Meta-heuristics And Convolutional Neural Network
-2. Forecasting Time Series Using Hybrid Convolutional Neural Network
-3. Applying The State-Of-The-Art Meta-heuristics and Convolutional Neural Network For Time Series Prediction
+# EO-CNN: An Enhanced CNN Model Trained by Equilibrium Optimization for Traffic Transportation Prediction
 
 # Traditional
-
-1. MLNN
-2. RNN
-3. LSTM
-4. GRU
-5. CNN
+1. Recurrent Neural Network (RNN)
+2. Convolutional Neural Network (CNN)
 
 # Evolutionary
-
-1. GA-CNN
+1. Genetic Algorithm (GA)
 
 # Swarm
-
-1. WOA-CNN (Whale)
+1. Whale Optimization Algorithm (WOA)
 
 # Bio
-
-1. Satin Bowerbird Optimizer (SBO) - 2017 - SBO-CNN
+1. Satin Bowerbird Optimizer (SBO) 
 
 # Human (Our proposed)
-
-1. Life Choice-Based Optimizer (LCBO) - 2019 - LCBO-CNN
+1. Life Choice-Based Optimizer (LCBO) 
 
 # System
-
-1. AEO
+1. Artificial Ecosystem-based Optimization (AEO)
 
 # Physics
-
-1. Multi-Verse Optimizer (MVO) - 2016 - MVO-CNN
+1. Multi-Verse Optimizer (MVO) 
 2. Equilibirum Optimizer (EO) - (Our proposed)
 
 ## Final comparison between
-
 1. RNN
-2. LSTM
-3. GRU
-4. CNN
-5. GA-CNN
-6. WOA-CNN
-7. LCBO-CNN
-8. SBO-CNN
-9. AEO-CNN
-10. MVO-CNN
-11. EO-CNN (Our proposed)
+2. CNN
+3. GA-CNN
+4. WOA-CNN
+5. LCBO-CNN
+6. SBO-CNN
+7. AEO-CNN
+8. MVO-CNN
+9. EO-CNN (Our proposed)

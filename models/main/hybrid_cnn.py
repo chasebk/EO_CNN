@@ -12,7 +12,7 @@ from mealpy.evolutionary_based import GA
 from mealpy.swarm_based import WOA
 from mealpy.physics_based import MVO, EO
 from mealpy.bio_based import SBO
-from mealpy.human_based import SSDO, LCBO
+from mealpy.human_based import LCBO
 from mealpy.system_based import AEO
 
 
@@ -42,16 +42,15 @@ class WoaCnn(RootHybridCnn):
 		self.solution, self.best_fit, self.loss_train = md._train__()
 
 
-class MvoCnn(RootHybridCnn):
-	def __init__(self, root_base_paras=None, root_hybrid_paras=None, cnn_paras=None, mvo_paras=None):
+class LcboCnn(RootHybridCnn):
+	def __init__(self, root_base_paras=None, root_hybrid_paras=None, cnn_paras=None, lcbo_paras=None):
 		RootHybridCnn.__init__(self, root_base_paras, root_hybrid_paras, cnn_paras)
-		self.epoch = mvo_paras["epoch"]
-		self.pop_size = mvo_paras["pop_size"]
-		self.wep_minmax = mvo_paras["wep_minmax"]
-		self.filename = "MVO_CNN-" + root_hybrid_paras["paras_name"]
+		self.epoch = lcbo_paras["epoch"]
+		self.pop_size = lcbo_paras["pop_size"]
+		self.filename = "LCBO_CNN-" + root_hybrid_paras["paras_name"]
 
 	def _training__(self):
-		md = MVO.BaseMVO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size, self.wep_minmax)
+		md = LCBO.LevyLCBO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size)
 		self.solution, self.best_fit, self.loss_train = md._train__()
 
 
@@ -70,27 +69,28 @@ class SboCnn(RootHybridCnn):
 		self.solution, self.best_fit, self.loss_train = md._train__()
 
 
-class SsdoCnn(RootHybridCnn):
-	def __init__(self, root_base_paras=None, root_hybrid_paras=None, cnn_paras=None, ssdo_paras=None):
+class AeoCnn(RootHybridCnn):
+	def __init__(self, root_base_paras=None, root_hybrid_paras=None, cnn_paras=None, aeo_paras=None):
 		RootHybridCnn.__init__(self, root_base_paras, root_hybrid_paras, cnn_paras)
-		self.epoch = ssdo_paras["epoch"]
-		self.pop_size = ssdo_paras["pop_size"]
-		self.filename = "SSDO_CNN-" + root_hybrid_paras["paras_name"]
+		self.epoch = aeo_paras["epoch"]
+		self.pop_size = aeo_paras["pop_size"]
+		self.filename = "AEO_CNN-" + root_hybrid_paras["paras_name"]
 
 	def _training__(self):
-		md = SSDO.LevySSDO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size)
+		md = AEO.LevyAEO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size)
 		self.solution, self.best_fit, self.loss_train = md._train__()
 
 
-class LcboCnn(RootHybridCnn):
-	def __init__(self, root_base_paras=None, root_hybrid_paras=None, cnn_paras=None, lcbo_paras=None):
+class MvoCnn(RootHybridCnn):
+	def __init__(self, root_base_paras=None, root_hybrid_paras=None, cnn_paras=None, mvo_paras=None):
 		RootHybridCnn.__init__(self, root_base_paras, root_hybrid_paras, cnn_paras)
-		self.epoch = lcbo_paras["epoch"]
-		self.pop_size = lcbo_paras["pop_size"]
-		self.filename = "LCBO_CNN-" + root_hybrid_paras["paras_name"]
+		self.epoch = mvo_paras["epoch"]
+		self.pop_size = mvo_paras["pop_size"]
+		self.wep_minmax = mvo_paras["wep_minmax"]
+		self.filename = "MVO_CNN-" + root_hybrid_paras["paras_name"]
 
 	def _training__(self):
-		md = LCBO.LevyLCBO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size)
+		md = MVO.BaseMVO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size, self.wep_minmax)
 		self.solution, self.best_fit, self.loss_train = md._train__()
 
 
@@ -105,14 +105,3 @@ class EoCnn(RootHybridCnn):
 		md = EO.LevyEO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size)
 		self.solution, self.best_fit, self.loss_train = md._train__()
 
-
-class AeoCnn(RootHybridCnn):
-	def __init__(self, root_base_paras=None, root_hybrid_paras=None, cnn_paras=None, aeo_paras=None):
-		RootHybridCnn.__init__(self, root_base_paras, root_hybrid_paras, cnn_paras)
-		self.epoch = aeo_paras["epoch"]
-		self.pop_size = aeo_paras["pop_size"]
-		self.filename = "AEO_CNN-" + root_hybrid_paras["paras_name"]
-
-	def _training__(self):
-		md = AEO.LevyAEO(self._objective_function__, self.problem_size, self.domain_range, self.log, self.epoch, self.pop_size)
-		self.solution, self.best_fit, self.loss_train = md._train__()

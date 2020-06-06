@@ -51,16 +51,16 @@ pool_sizes = [2, ]
 
 ###================= Settings models for drafts ==============================#####
 
-
-####: GRU-1HL
-gru1hl_final = {
+####: RNN-1HL
+rnn1hl_final = {
 	"hidden_sizes": hidden_sizes1,
 	"activations": activations,
 	"learning_rate": learning_rates,
 	"epoch": epochs,
 	"batch_size": batch_sizes,
 	"optimizer": optimizers,
-	"loss": losses,
+	## Optimizer like keras: sgd = SGD, adam = Adam,  adagrad = Adagrad, adadelta = Adadelta, rmsprop = RMSprop, adamax = Adamax, nadam = Nadam
+	"loss": ['mse'],
 	"dropouts": dropouts
 }
 
@@ -148,21 +148,6 @@ sbo_cnn_final = {
 	"domain_range": domain_ranges
 }
 
-#### : SSDO-CNN
-ssdo_cnn_final = {
-	"hidden_sizes": hidden_sizes2,
-	"activations": activations,
-	"dropouts": dropouts,
-
-	"filters_size": filters_sizes,
-	"kernel_size": kernel_sizes,
-	"pool_size": pool_sizes,
-
-	"epoch": epochs,
-	"pop_size": pop_sizes,
-	"domain_range": domain_ranges
-}
-
 #### : LCBO-CNN
 lcbo_cnn_final = {
 	"hidden_sizes": hidden_sizes2,
@@ -208,44 +193,3 @@ aeo_cnn_final = {
 	"domain_range": domain_ranges
 }
 
-
-###================= Settings models for paper ============================####
-
-
-####: MLNN-1HL
-mlnn1hl_final = {
-	"hidden_sizes": hidden_sizes1,
-	"activations": activations,
-	"learning_rate": learning_rates,
-	"epoch": epochs,
-	"batch_size": batch_sizes,
-	"optimizer": optimizers,
-	## Optimizer like keras: sgd = SGD, adam = Adam,  adagrad = Adagrad, adadelta = Adadelta, rmsprop = RMSprop, adamax = Adamax, nadam = Nadam
-	"loss": losses
-}
-
-####: RNN-1HL
-rnn1hl_final = {
-	"hidden_sizes": hidden_sizes1,
-	"activations": activations,
-	"learning_rate": learning_rates,
-	"epoch": epochs,
-	"batch_size": batch_sizes,
-	"optimizer": optimizers,
-	## Optimizer like keras: sgd = SGD, adam = Adam,  adagrad = Adagrad, adadelta = Adadelta, rmsprop = RMSprop, adamax = Adamax, nadam = Nadam
-	"loss": ['mse'],
-	"dropouts": dropouts
-}
-
-####: LSTM-1HL
-lstm1hl_final = {
-	"hidden_sizes": hidden_sizes1,
-	"activations": activations,
-	"learning_rate": learning_rates,
-	"epoch": epochs,
-	"batch_size": batch_sizes,
-	"optimizer": optimizers,
-	## Optimizer like keras: sgd = SGD, adam = Adam,  adagrad = Adagrad, adadelta = Adadelta, rmsprop = RMSprop, adamax = Adamax, nadam = Nadam
-	"loss": losses,
-	"dropouts": dropouts
-}

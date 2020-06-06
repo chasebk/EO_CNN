@@ -118,38 +118,6 @@ class RootHybridDeepNets(RootBase):
 		return mean_squared_error(y_pred, self.y_train)
 
 
-class RootHybridRnn(RootHybridDeepNets):
-
-	def _building_architecture__(self):
-		#  The RNN 1-HL architecture
-		self.model_rnn = Sequential()
-		self.model_rnn.add(LSTM(units=self.hidden_sizes[0], return_sequences=True, activation=self.activations[0], input_shape=(self.X_train.shape[1], 1)))
-		self.model_rnn.add(Dropout(self.dropouts[0]))
-		self.model_rnn.add(LSTM(units=self.hidden_sizes[0]))
-		self.model_rnn.add(Dropout(0.2))
-		self.model_rnn.add(Dense(units=1, activation=self.activations[1]))
-
-
-class RootHybridLstm(RootHybridDeepNets):
-
-	def _building_architecture__(self):
-		#  The LSTM 1-HL architecture
-		self.model_rnn = Sequential()
-		self.model_rnn.add(LSTM(units=self.hidden_sizes[0], input_shape=(None, 1), activation=self.activations[0]))
-		self.model_rnn.add(Dropout(self.dropouts[0]))
-		self.model_rnn.add(Dense(units=1, activation=self.activations[1]))
-
-
-class RootHybridGru(RootHybridDeepNets):
-
-	def _building_architecture__(self):
-		#  The GRU 1-HL architecture
-		self.model_rnn = Sequential()
-		self.model_rnn.add(GRU(units=self.hidden_sizes[0], input_shape=(self.X_train.shape[1], 1), activation=self.activations[0]))
-		self.model_rnn.add(Dropout(self.dropouts[0]))
-		self.model_rnn.add(Dense(units=1))
-
-
 class RootHybridCnn(RootHybridDeepNets):
 
 	def __init__(self, root_base_paras=None, root_hybrid_paras=None, cnn_paras=None):
